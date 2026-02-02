@@ -1,5 +1,5 @@
-import { ResultSetHeader } from "mysql2";
-import database from "../../database/client";
+import { ResultSetHeader, RowDataPacket } from "mysql2";
+import database from "../../../database/client.js";
 
 export async function findAllNotes() {
   const [rows] = await database.query("SELECT * FROM notes");
@@ -13,4 +13,11 @@ export async function insertNote(title: string, content: string) {
   );
 
   return result;
+}
+
+export async function findNoteById(id: number) {
+  const [rows] = await database.query<RowDataPacket[]>(
+    "SELECT * FROM notes WHERE id =?", 
+    [id]);
+    return rows;
 }

@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-import router from "./routers/router";
-import database from "./database/client";
+import notesRouter from "./routers/notes.router.js";
+import database from "../database/client.js";
 
 const app = express();
 
@@ -17,6 +17,6 @@ app.get("/test-db", async (req, res) => {
   });
 });
 
-app.use(router);
+app.use("/api/notes", notesRouter);
 
 export default app;
