@@ -9,6 +9,7 @@ function App() {
     <nav>
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>
+      <Link to="/newnote">Ajoute une note</Link>
     </nav>
     <main>
       <Outlet />
