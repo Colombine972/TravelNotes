@@ -1,10 +1,13 @@
 import express from "express";
-import {getAllNotes, addNote, getNotById} from "../modules/notes/notes.actions.js";
+import notesActions from "../modules/notes/notesActions.js";
+
 
 const router = express.Router();
 
-router.get("/", getAllNotes);
-router.post("/", addNote);
-router.get("/:id", getNotById);
+router.get("/", notesActions.browse);
+router.post("/", notesActions.add);
+router.get("/:id", notesActions.read);
+router.put("/:id", notesActions.edit);
+router.delete("/:id", notesActions.remove);
 
 export default router;
