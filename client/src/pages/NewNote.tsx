@@ -1,4 +1,5 @@
   import { useState } from "react";
+  import "../styles/NewNote.css";
   
   type NoteToAdd = {
     title: string;
@@ -21,7 +22,6 @@
       [name]: value,
     }));
   };
-
 
     const sendNote = async (event: React.ChangeEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -54,10 +54,9 @@
     setNoteToAdd({ title: "", content: "" });
   };
   
- 
- 
-  
+   
   return (
+    <div className="new-note-page">
   <form onSubmit={sendNote}>
         <label htmlFor="title">Titre de la note :</label>
         <input
@@ -90,7 +89,8 @@
         </button>
         
       </form>
+      </div>
   )
   }
-  
+
   export default NewNote;

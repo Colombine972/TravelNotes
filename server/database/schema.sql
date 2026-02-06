@@ -4,3 +4,10 @@ CREATE TABLE IF NOT EXISTS notes (
   content TEXT NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  is_admin boolean not null default false
+);

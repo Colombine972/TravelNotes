@@ -1,5 +1,8 @@
 import mysql from "mysql2/promise";
 
+export type Result = mysql.ResultSetHeader;
+export type Rows = mysql.RowDataPacket[];
+
 const database = mysql.createPool({
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),

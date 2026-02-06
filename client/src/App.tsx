@@ -7,9 +7,10 @@ function App() {
   return (
     <>
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
+      <Link to="/">S'enregistrer</Link>
+      <Link to="/about">Se connecter</Link>
       <Link to="/newnote">Ajoute une note</Link>
+      <Link to="/notes">Mes notes</Link>
     </nav>
     <main>
       <Outlet />
