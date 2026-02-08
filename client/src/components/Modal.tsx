@@ -12,6 +12,7 @@ type ModalProps = {
 function Modal({ isOpen, onClose, children }: ModalProps) {
 	
 	useEffect(() => {
+	
     if (isOpen) {
       document.body.style.overflow = "hidden";
     }

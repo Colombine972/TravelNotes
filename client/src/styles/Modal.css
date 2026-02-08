@@ -8,7 +8,7 @@
   align-items: center;
 
   overflow: hidden; /* 🔑 AUCUN scroll */
-
+  cursor: pointer;
   z-index: 9999;
 }
 
@@ -48,6 +48,9 @@
 
   word-break: break-word;
   overflow-wrap: break-word;
+}
+.note-modal p {
+  padding-right: 70px;
 }
 
 
