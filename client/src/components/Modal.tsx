@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { ReactNode } from "react";
 import "../styles/Modal.css";
 
@@ -10,7 +11,16 @@ type ModalProps = {
 
 function Modal({ isOpen, onClose, children }: ModalProps) {
 	
-	if (!isOpen) return null;
+	useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  	if (!isOpen) return null;
 
 	return (
 		<div className="modal-overlay" onClick={onClose}>
