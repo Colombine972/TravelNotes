@@ -9,7 +9,16 @@ type Note = {
 };
 
 function Notes() {
-    const [notes, setNotes] = useState<Note[]>([]);
+
+  const formatDate = (dateString: string) => {
+    return new Intl.DateTimeFormat("fr-FR", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }).format(new Date(dateString));
+  };
+
+  const [notes, setNotes] = useState<Note[]>([]);
     
    const getNotes = async () => {
   try {
@@ -41,13 +50,9 @@ return (
 
             <div className="note-content">
               <h3 className="note-title">{note.title}</h3>
-              <p className="note-date"> {new Intl.DateTimeFormat("fr-FR", {
-              day: "2-digit",
-              month: "long",
-              year: "numeric",
-              }).format(new Date(note.created_at))}</p>
-              <p className="note-text">{note.content}</p>
+              <p className="note-date"> {formatDate(note.created_at)}</p>
             </div>
+            <p className="note-text">{note.content}</p>
           </article>
         ))}
       </div>
