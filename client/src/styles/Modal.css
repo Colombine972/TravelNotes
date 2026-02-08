@@ -1,0 +1,78 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 40, 0.75);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden; /* 🔑 AUCUN scroll */
+
+  z-index: 9999;
+}
+
+/* CONTENEUR */
+.modal-content {
+  position: relative;
+  background: transparent;
+  padding: 0;
+
+  max-width: 92vw;
+  max-height: 92vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+/* FOND */
+.modal-content::before {
+ display: none;
+}
+
+/* CONTENU */
+.modal-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  overflow: hidden;
+}
+
+/* CROIX */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.85);
+  color: #1f2d3d;
+
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+}
+
