@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 function Register() {
   const emailRef = useRef<HTMLInputElement>(null);
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+
 
   // Hook pour la navigation
   const navigate = useNavigate();
@@ -18,13 +18,7 @@ function Register() {
     setPassword(event.target.value);
   };
 
-  // Gestionnaire de changement de la confirmation du mot de passe
-  const updateRegisterConfirmPassword: ChangeEventHandler<HTMLInputElement> = (
-    event,
-  ) => {
-    setConfirmPassword(event.target.value);
-  };
-
+ 
   // Gestionnaire de soumission du formulaire
   const submitRegisterForm: FormEventHandler = async (event) => {
     event.preventDefault();
@@ -60,44 +54,40 @@ function Register() {
     
     <main className="register-page">
     <section className="register-form">
-        <div className="form-card">
+        <div className="welcome-card">
             <h1>Bienvenue <span>👋</span></h1>
             <p className="subtitle">
             Un espace simple et personnel pour écrire et retrouver toutes tes
             notes.
           </p>
+          </div>
+          <div className="login-card">
         <form onSubmit={submitRegisterForm}>
-      <div>
+      <div className="input-group">
         {/* Champ pour l'email */}
-        <label htmlFor="email">email</label>{" "}
-        <input ref={emailRef} type="email" id="email" />
+        <label htmlFor="email"><span></span>Adresse email</label>{" "}
+        <input ref={emailRef} type="email" id="email" placeholder="Entrez votre mail"/>
       </div>
-      <div>
+      <div className="input-group">
         {/* Champ pour le mot de passe */}
-        <label htmlFor="password">password</label>{" "}
+        <label htmlFor="password"><span></span>Mot de passe</label>{" "}
         <input
           type="password"
           id="password"
+          placeholder="Entrez votre mot de passe"
           value={password}
           onChange={updateRegisterPassword}
         />{" "}
         {/* Indicateur de force du mot de passe */}
         {password.length >= 8 ? "✅" : "❌"} {`length: ${password.length} >= 8`}
       </div>
-      <div>
-        {/* Champ pour la confirmation du mot de passe */}
-        <label htmlFor="confirm-password">confirm password</label>{" "}
-        <input
-          type="password"
-          id="confirm-password"
-          value={confirmPassword}
-          onChange={updateRegisterConfirmPassword}
-        />{" "}
-        {/* Indicateur de correspondance avec le mot de passe */}
-        {password === confirmPassword ? "✅" : "❌"}
-      </div>
-      {/* Bouton de soumission du formulaire */}
-      <button type="submit">Send</button>
+      <button type="submit" className="login-btn">
+            Se connecter
+      </button>
+
+      <p className="register-link">
+            Pas encore de compte ? <span onClick={() => navigate("/register")}>Créer un compte</span>
+      </p>
     </form>
     </div>
     </section>
