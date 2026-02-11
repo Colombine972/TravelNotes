@@ -1,4 +1,4 @@
-.register-page {
+.login-page {
     background-image: url(../assets/accueil.PNG);
     background-size: cover;
     min-height: 100vh;
@@ -10,7 +10,7 @@
     padding-left: 6rem;        /* espace depuis le bord gauche */
 }
 
-.register-form {
+.login-form {
     position: relative;
     width: 400px;
     height: 500px;

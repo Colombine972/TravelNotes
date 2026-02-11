@@ -78,8 +78,6 @@ function Register() {
           value={password}
           onChange={updateRegisterPassword}
         />{" "}
-        {/* Indicateur de force du mot de passe */}
-        {password.length >= 8 ? "✅" : "❌"} {`length: ${password.length} >= 8`}
       </div>
       <button type="submit" className="login-btn">
             Se connecter
