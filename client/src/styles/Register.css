@@ -11,6 +11,9 @@
 }
 
 .register-form {
+    position: relative;
+    width: 400px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,13 +35,23 @@
 /* -------- CARD TEXTE -------- */
 
 .welcome-card {
-  max-width: 350px;
-  color: #2d2d2d;
+  width: 100%;
+  height: 100%;
+  padding: 0 2rem 0 2rem;
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
 }
+
 
 .welcome-card h1 {
   font-size: 2.5rem;
   font-weight: 700;
+  margin-bottom: 0;
 }
 
 .welcome-card p {
@@ -50,8 +63,10 @@
 /* -------- CARD FORM -------- */
 
 .login-card {
-  width: 380px;
-  padding: 2.5rem;
+    position: absolute;
+    top : 30%;
+  width: 300px;
+  padding: 0.5rem 1.5rem 0 1.5rem;
   border-radius: 24px;
 
   background: rgba(255, 255, 255, 0.35);
@@ -61,6 +76,7 @@
   border: 1px solid rgba(255, 255, 255, 0.4);
 
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  z-index: 2;
 }
 
 /* -------- FORM -------- */
@@ -75,6 +91,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  width: 295px;
 }
 
 .input-group label {
@@ -102,7 +119,7 @@
   border-radius: 14px;
   border: none;
   cursor: pointer;
-
+    width: 295px;
   font-weight: 600;
   font-size: 1rem;
   color: white;
