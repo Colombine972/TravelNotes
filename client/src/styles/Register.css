@@ -1,13 +1,14 @@
 .register-page {
     background-image: url(../assets/accueil.PNG);
     background-size: cover;
-    min-height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
     display: flex;
-    align-items: center;       /* centre verticalement */
-    justify-content: flex-start; /* aligne à gauche */
-    padding-left: 6rem;        /* espace depuis le bord gauche */
+    align-items: center;       
+    justify-content: center;
+    padding-left: 2rem; 
 }
 
 .register-form {
@@ -62,10 +63,13 @@
 
 /* -------- CARD FORM -------- */
 
-.login-card {
-    position: absolute;
-    top : 27%;
-  width: 300px;
+.register-card {
+  position: absolute;
+  top : 48%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  width: 100%;
+  max-width: 320px;
   padding: 1rem 1.5rem 1rem 1.5rem;
   border-radius: 24px;
 
@@ -81,7 +85,7 @@
 
 /* -------- FORM -------- */
 
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -91,7 +95,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 250px;
+  width: 100%;
 }
 
 label {
@@ -102,7 +106,7 @@ label {
   font-weight: 500;
   font-size: 1rem;
   text-align: start;
-  padding-left: 20px;
+  padding-left: 40px;
 }
 
 .input-group input {
@@ -117,14 +121,14 @@ label {
 
 /* -------- BUTTON -------- */
 
-.login-btn {
+.register-btn {
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   padding: 1rem;
   border-radius: 14px;
   border: none;
   cursor: pointer;
-    width: 255px;
+    width: 100%;
   font-weight: 600;
   font-size: 1rem;
   color: white;
@@ -133,23 +137,85 @@ label {
   transition: 0.3s ease;
 }
 
-.login-btn:hover {
+.register-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(91, 140, 255, 0.4);
 }
 
 /* -------- LINK -------- */
 
-.register-link {
+.login-link {
     display: flex;
     flex-direction: column;
   text-align: center;
   font-size: 0.9rem;
 }
 
-.register-link span {
+.login-link span {
   color: #5b8cff;
   cursor: pointer;
   font-weight: 500;
   padding-top: 5px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+}
+
+.icon-mail {
+    top: 45px;
+}
+
+.icon-lock {
+    top: 25px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.9rem 1rem 0.9rem 2.8rem; /* 👈 espace pour icône */
+  border-radius: 12px;
+  border: none;
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 35px;
+  top: 155px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password:hover {
+  color: #5b8cff;
+}
+
+@media (min-width: 1024px) {
+  .register-page {
+    justify-content: flex-start;
+    padding-left: 6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-page {
+    background-position: 70% center; /* recadre vers la droite */
+  }
 }

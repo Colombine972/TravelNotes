@@ -1,3 +1,4 @@
+import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import "../styles/Login.css";
 import { useRef, useState } from "react";
 import type { ChangeEventHandler, FormEventHandler } from "react";
@@ -6,7 +7,7 @@ import { useNavigate } from "react-router";
 function Login() {
   const emailRef = useRef<HTMLInputElement>(null);
   const [password, setPassword] = useState("");
-
+  const [showPassword, setShowPassword] = useState(false);
 
   // Hook pour la navigation
   const navigate = useNavigate();
@@ -65,20 +66,38 @@ function Login() {
         <form onSubmit={submitRegisterForm}>
       <div className="input-group">
         {/* Champ pour l'email */}
-        <label htmlFor="email"><span></span>Adresse email</label>{" "}
+        <label htmlFor="email"><span></span>Adresse email</label>
+        <div className="input-wrapper">
+            <Mail className="input-icon icon-mail" size={18} />
+          
         <input ref={emailRef} type="email" id="email" placeholder="Entrez votre mail"/>
+        </div>
       </div>
       <div className="input-group">
         {/* Champ pour le mot de passe */}
-        <label htmlFor="password"><span></span>Mot de passe</label>{" "}
+        <label htmlFor="password"><span></span>Mot de passe</label>
+        <div className="input-wrapper">
+            <Lock className="input-icon icon-lock" size={18} />
+        
+        
         <input
-          type="password"
-          id="password"
-          placeholder="Entrez votre mot de passe"
-          value={password}
-          onChange={updateRegisterPassword}
-        />{" "}
-      </div>
+      type={showPassword ? "text" : "password"}
+      id="password"
+      placeholder="Entrez votre mot de passe"
+      value={password}
+      onChange={updateRegisterPassword}
+    />
+
+    <button
+      type="button"
+      className="toggle-password"
+      onClick={() => setShowPassword((prev) => !prev)}
+      aria-label="Afficher ou masquer le mot de passe"
+    >
+      {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+    </button>
+    </div>
+  </div>
       <button type="submit" className="login-btn">
             Se connecter
       </button>

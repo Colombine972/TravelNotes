@@ -1,3 +1,4 @@
+import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import "../styles/Register.css";
 import { useRef, useState } from "react";
 import type { ChangeEventHandler, FormEventHandler } from "react";
@@ -6,7 +7,8 @@ import { useNavigate } from "react-router";
 function Register() {
   const emailRef = useRef<HTMLInputElement>(null);
   const [password, setPassword] = useState("");
-
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   // Hook pour la navigation
   const navigate = useNavigate();
@@ -16,6 +18,12 @@ function Register() {
     event,
   ) => {
     setPassword(event.target.value);
+  };
+
+    const handleConfirmPasswordChange: ChangeEventHandler<HTMLInputElement> = (
+    event,
+  ) => {
+    setConfirmPassword(event.target.value);
   };
 
  
@@ -55,36 +63,67 @@ function Register() {
     <main className="register-page">
     <section className="register-form">
         <div className="welcome-card">
-            <h1>Bienvenue <span>👋</span></h1>
+            <h1>Inscription <span>✍️</span></h1>
             <p className="subtitle">
-            Un espace simple et personnel pour écrire et retrouver toutes tes
-            notes.
+            Créer un compte pour commencer à écire et organiser tes notes.
           </p>
           </div>
-          <div className="login-card">
+          <div className="register-card">
         <form onSubmit={submitRegisterForm}>
       <div className="input-group">
         {/* Champ pour l'email */}
-        <label htmlFor="email"><span></span>Adresse email</label>{" "}
+
+        <label htmlFor="email"><span></span>Adresse email</label>
+        <div className="input-wrapper">
+            <Mail className="input-icon icon-mail" size={18} />
         <input ref={emailRef} type="email" id="email" placeholder="Entrez votre mail"/>
+      </div>
       </div>
       <div className="input-group">
         {/* Champ pour le mot de passe */}
-        <label htmlFor="password"><span></span>Mot de passe</label>{" "}
+
+            
+        <label htmlFor="password"><span></span>Mot de passe</label>
+        <div className="input-wrapper">
+            <Lock className="input-icon icon-lock" size={18} />
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           id="password"
-          placeholder="Entrez votre mot de passe"
+          placeholder="Choisissez un mot de passe"
           value={password}
           onChange={updateRegisterPassword}
-        />{" "}
+        />
+        
+        <button
+      type="button"
+      className="toggle-password"
+      onClick={() => setShowPassword((prev) => !prev)}
+      aria-label="Afficher ou masquer le mot de passe"
+    >
+      {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+    </button>
+    </div>
       </div>
-      <button type="submit" className="login-btn">
-            Se connecter
+      <div className="input-group">
+        {/* Champ pour la confirmation du mot de passe */}
+        
+        <input
+          type="password"
+          id="confirm-password"
+          placeholder="Confirmer votre mot de passe"
+          value={confirmPassword}
+          onChange={handleConfirmPasswordChange}
+        />
+        
+      </div>
+      
+
+      <button type="submit" className="register-btn">
+            M'inscrire
       </button>
 
-      <p className="register-link">
-            Pas encore de compte ? <span onClick={() => navigate("/register")}>Créer un compte</span>
+      <p className="login-link">
+            Déja inscrit ? <span onClick={() => navigate("/login")}>Se connecter</span>
       </p>
     </form>
     </div>
